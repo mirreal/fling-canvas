@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Fling</title>
+		<link rel="icon" href="favicon.ico" />
+		<link rel="stylesheet" href="fling.css">
+	</head>
+	<body>
+		<header id="gameState">
+			<h2>Main Menu</h2>
+		</header>
+		
+		<div id="gameUI">
+			<div id="gameMenu">
+				<p><a id="playBtn" class="button" href="">Play</a></p>
+				<p><a id="introBtn" class="button" href="">Introduction</a></p>
+				<p><a id="resetBtn" class="button" href="">Restart</a></p>
+			</div>
+			
+			<div id="gameIntro">
+				<p>Each puzzle consists of a set of balls placed on the board. 
+					To solve a puzzle, you need to remove all balls(but one) from the board</p>
+				<p>You do this by "flinging" balls along a line into other balls, 
+					cansing the hit balls to roll off the board</p>
+				<p>You cannot fling a ball into a neighbouring ball</p>
+				<p>Control: use your mouse select a ball</p>
+				<p>W/↑ - Move selector up</p>
+				<p>S/↓ - Move selector down</p>
+				<p>A/← - Move selector left</p>
+				<p>D/→ - Move selector right</p>
+				<p>Tips: Use the Undo/R when you get stuck</p>
+				<p><a id="playBtn2" class="button" href="">Start Now</a></p>
+			</div>
+			
+			<div id="gameCtrl">
+				<input id="upBtn" type="button" value="↑" >
+				<input id="downBtn" type="button" value="↓" >
+				<input id="leftBtn" type="button" value="←" >
+				<input id="rightBtn" type="button" value="→" >
+			</div>
+			
+			<div id="gameComplete">
+				<div id="gameEndShow">
+					<p id="scoreShow">score</p>
+					<input type="text" id="nameInput" placeholder="Please enter your name">
+					<input type="button" id="addBtn" value="Add my score" disabled="">
+					<input type="button" id="newGameBtn" value="New game">
+					<ol id="highScoreList">
+					</ol>
+				</div>
+				<input id="nextBtn" type="button" value="Next"> 
+			</div>
+		</div>
+		
+		<canvas id="canvas" width="400" height="400">Your browser does not support Canvas.</canvas>
+		
+		<footer>
+			<input id="menuBtn" type="button" value="Menu">
+			<div id="puzzleScore"> </div>
+			<input id="undoBtn" type="button" value="Undo">
+		</footer>
+		
+		<script src="fling.js"> </script>
+	</body>
+</html>
