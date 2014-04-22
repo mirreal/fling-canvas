@@ -2,16 +2,11 @@ var gameState = document.getElementById("gameState");
 var gameUI = document.getElementById("gameUI"),
 	gameMenu = document.getElementById("gameMenu"),
 	gameIntro = document.getElementById("gameIntro"),
-	gameCtrl = document.getElementById("gameCtrl"),
 	gameComplete = document.getElementById("gameComplete");	
 var playBtn = document.getElementById("playBtn"),
 	introBtn = document.getElementById("introBtn"),
 	resetBtn = document.getElementById("resetBtn"),
 	playBtn2 = document.getElementById("playBtn2");	
-var upBtn = document.getElementById("upBtn"),
-	downBtn = document.getElementById("downBtn"),
-	leftBtn = document.getElementById("leftBtn"),
-	rightBtn = document.getElementById("rightBtn");
 var gameEndShow = document.getElementById("gameEndShow"),
 	scoreShow = document.getElementById("scoreShow"),
 	nameInput = document.getElementById("nameInput"),
@@ -135,7 +130,6 @@ puzzles = [
 
 
 hide(gameIntro);
-hide(gameCtrl);
 hide(gameComplete);
 hide(undoBtn);
 hide(puzzleScore);
@@ -144,7 +138,6 @@ hide(puzzleScore);
 playBtn.onclick = function(e) {
 	e.preventDefault();
 	hide(gameMenu);
-	show(gameCtrl);
 	show(undoBtn);
 	startGame();
 }
@@ -163,14 +156,12 @@ resetBtn.onclick = function(e) {
 	//puzzle = parseFloat(localStorage.getItem("fling_puzzle"));
 	//score = parseFloat(localStorage.getItem("fling_score"));
 	hide(gameMenu);
-	show(gameCtrl);
 	startGame();
 }
 
 playBtn2.onclick = function(e) {
 	e.preventDefault();
 	hide(gameIntro);
-	show(gameCtrl);
 	show(undoBtn);
 	startGame();
 }
@@ -246,10 +237,6 @@ function startGame() {
 function drawBalls(balls) {
 	hide(gameComplete);
 	window.addEventListener("keydown", keyAction);
-	upBtn.onclick = upArrow;
-	downBtn.onclick = downArrow;
-	leftBtn.onclick = leftArrow;
-	rightBtn.onclick = rightArrow;
 	undoBtn.onclick = undo;
 	menuBtn.onclick = showMenu;
 	
@@ -482,10 +469,6 @@ function findCheckBall() {
 
 function removeEvent() {
 	window.removeEventListener("keydown", keyAction, false);
-	upBtn.onclick = null;
-	downBtn.onclick = null;
-	leftBtn.onclick = null;
-	rightBtn.onclick = null;
 	undoBtn.onclick = null;
 	menuBtn.onclick = null;
 }
@@ -597,7 +580,6 @@ function showMenu() {
 	show(gameMenu);
 	hide(undoBtn);
 	hide(gameIntro);
-	hide(gameCtrl);
 	hide(gameComplete);
 }
 
