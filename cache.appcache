@@ -1,0 +1,19 @@
+CACHE MANIFEST
+
+
+# Main Page
+fling.html
+
+# CSS
+fling.css
+
+# JS
+canvas.js
+localData.js
+eventHandler.js
+HTMLManager.js
+puzzles.js
+fling.js
+
+NETWORK:
+*

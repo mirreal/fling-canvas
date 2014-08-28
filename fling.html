@@ -1,69 +1,56 @@
 <!DOCTYPE HTML>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Fling</title>
-		<link rel="icon" href="favicon.ico" />
-		<link rel="stylesheet" href="fling.css">
-	</head>
-	<body>
-		<header id="gameState">
-			<h2>Main Menu</h2>
-		</header>
-		
-		<div id="gameUI">
-			<div id="gameMenu">
-				<p><a id="playBtn" class="button" href="">Play</a></p>
-				<p><a id="introBtn" class="button" href="">Introduction</a></p>
-				<p><a id="resetBtn" class="button" href="">Restart</a></p>
-			</div>
-			
-			<div id="gameIntro">
-				<p>Each puzzle consists of a set of balls placed on the board. 
-					To solve a puzzle, you need to remove all balls(but one) from the board</p>
-				<p>You do this by "flinging" balls along a line into other balls, 
-					cansing the hit balls to roll off the board</p>
-				<p>You cannot fling a ball into a neighbouring ball</p>
-				<p>Control: use your mouse select a ball</p>
-				<p>W/↑ - Move selector up</p>
-				<p>S/↓ - Move selector down</p>
-				<p>A/← - Move selector left</p>
-				<p>D/→ - Move selector right</p>
-				<p>Tips: Use the Undo/R when you get stuck</p>
-				<p><a id="playBtn2" class="button" href="">Start Now</a></p>
-			</div>
+<html manifest="cache.appcache">
+  <head>
+    <meta charset="UTF-8">
+    <title>Fling in Canvas</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="fling.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="leftContainer">
+        <div id="GameIntro">
+          <h2>Fling in Canvas</h2>
+          <h3>Remove all balls(but one) to solve a puzzle</h3>
+          <p><a href="#" id="restartBtn" class="button">Restart</a></p>
+          <p><a href="#" id="undoBtn" class="button">Undo</a></p>
+          <h3>How to play?</h3>
+          <br>
+          <p>Use your <strong>mouse</strong> to select a ball. 
+            Then use your <strong>arrow keys</strong> to move the ball 
+            along a line into other balls.
+            Press <strong>R key</strong> or <strong>Undo Button</strong> to return last state.
+          </p>
+        </div>
+      </div>
+      <div id="rightContainer">
+        <header>
+          <h2>Fling in Canvas</h2>
+        </header>
+        <div id="gameComplete">
+          <div id="puzzleScore"> </div>
+          <br>
+          <input id="nextBtn" type="button" value="Next">
+        </div>
+        <div id="gameEnd">
+          <p id="scoreShow">score</p>
+          <input type="text" id="nameInput" placeholder="Input your name">
+          <input type="button" id="addBtn" value="Add my score" disabled="">
+          <input type="button" id="newGameBtn" value="New game">
+          <h3>TOP 7</h3>
+          <ol id="highScoreList"> </ol>
+        </div>
+        <canvas id="canvas" width="400" height="400">
+          Your browser does not support Canvas.
+        </canvas>
+      </div>
+    </div>
 
-			<div id="intro">
-				<h2 style="text-align: center">How to play?</h2>
-				<br>
-				<p>use your mouse to select a ball</p>
-				<p>W/↑ - Move selector up</p>
-				<p>S/↓ - Move selector down</p>
-				<p>A/← - Move selector left</p>
-				<p>D/→ - Move selector right</p>
-			</div>
-			
-			<div id="gameComplete">
-				<div id="gameEndShow">
-					<p id="scoreShow">score</p>
-					<input type="text" id="nameInput" placeholder="Please enter your name">
-					<input type="button" id="addBtn" value="Add my score" disabled="">
-					<input type="button" id="newGameBtn" value="New game">
-					<ol id="highScoreList">
-					</ol>
-				</div>
-				<input id="nextBtn" type="button" value="Next"> 
-			</div>
-		</div>
-		
-		<canvas id="canvas" width="400" height="400">Your browser does not support Canvas.</canvas>
-		
-		<footer>
-			<input id="menuBtn" type="button" value="Menu">
-			<div id="puzzleScore"> </div>
-			<input id="undoBtn" type="button" value="Undo">
-		</footer>
-		
-		<script src="fling.js"> </script>
-	</body>
+    <script src="canvas.js"></script>
+    <script src="localData.js"></script>
+    <script src="eventHandler.js"></script>
+    <script src="HTMLManager.js"></script>
+    <script src="puzzles.js"></script>
+    <script src="fling.js"></script>
+  </body>
 </html>
