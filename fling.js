@@ -92,13 +92,12 @@ Game.prototype.newGame = function() {
   this.start();
 };
 
-Game.prototype.addScore = function() {
+Game.prototype.addScore = function(value) {
   this.highScores = this.localData.getHighScores();
 
   var highScores = this.highScores;
-  var name = nameInput.value; // that
   var user = {
-    "name": name,
+    "name": value,
     "score": this.score
   };
 
@@ -116,7 +115,6 @@ Game.prototype.addScore = function() {
 
   this.localData.set("fling_highScores",JSON.stringify(highScores));
   this.HTMLManager.updateHighScores(this.highScores);
-
   this.HTMLManager.showAddScoreUI();
 };
 
@@ -147,52 +145,53 @@ Game.prototype.move = function(direction) {
   if (this.checkBall === null) return this.draw();
   this.removeEventHandler();
 
-  var balls = this.balls;
   var checkBall = this.checkBall;
+  this.checkBall = null;
 
   switch (direction) {
     case 'right':
-      this.checkBall.vx = 0.2;
+      checkBall.vx = 0.2;
       break;
     case 'left':
-      this.checkBall.vx = -0.2;
+      checkBall.vx = -0.2;
       break;
     case 'up':
-      this.checkBall.vy = -0.2;
+      checkBall.vy = -0.2;
       break;
     case 'down':
-      this.checkBall.vy = 0.2;
+      checkBall.vy = 0.2;
   }
-  this.checkBall = null;
 
-  var count = 0;
+  var count = 0,
+      hasNeighbor = false;
   var condition1, condition2;
 
-  balls.forEach(function(ball) {
+  this.balls.forEach(function(ball) {
     switch (direction) {
       case 'right':
-        condition1 = checkBall.y - ball.y;
+        condition1 = checkBall.y == ball.y;
         condition2 = ball.x - checkBall.x;
         break;
       case 'left':
-        condition1 = checkBall.y - ball.y;
+        condition1 = checkBall.y == ball.y;
         condition2 = checkBall.x - ball.x;
         break;
       case 'up':
-        condition1 = checkBall.x - ball.x;
+        condition1 = checkBall.x == ball.x;
         condition2 = checkBall.y - ball.y;
         break;
       case 'down':
-        condition1 = checkBall.x - ball.x;
+        condition1 = checkBall.x == ball.x;
         condition2 = ball.y - checkBall.y;
     }
-    if (!condition1 && condition2 > 1) count++;
+    if (condition1 && condition2 == 1) hasNeighbor = true;
+    if (condition1 && condition2 > 1) count++;
   });
 
-  if (count === 0) return this.draw();
+  if (count === 0 || hasNeighbor === true) return this.draw();
 
-  this.historys.push(JSON.stringify(balls));
-  this.ballsLength = balls.length;
+  this.historys.push(JSON.stringify(this.balls));
+  this.ballsLength = this.balls.length;
 
   this.moveAnimation();
 };
