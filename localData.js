@@ -1,5 +1,36 @@
+function getParamFromUrl(
+  key,
+  defaultVal,
+  search = location.search,
+  ignoreCase = true
+) {
+  const regExp = ignoreCase
+    ? new RegExp(`[?|&]${key}=([^&]+)`, 'i')
+    : new RegExp(`[?|&]${key}=([^&]+)`);
+  const match = regExp.exec(search);
+
+  return match ? match[1] : defaultVal;
+}
+
+function getParam(key, search = location.search) {
+  const value = getParamFromUrl(key, '', search);
+
+  return typeof value !== 'undefined'
+    ? decodeURIComponent(value)
+    : '';
+}
+
+
 function LocalData() {
   this.storage = window.localStorage;
+
+  this.init();
+}
+
+LocalData.prototype.init = function() {
+  const puzzle = getParam('puzzle');
+
+  this.set('fling_puzzle', puzzle);
 }
 
 LocalData.prototype.get = function(key) {

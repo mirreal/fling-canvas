@@ -1,11 +1,11 @@
-#Fling in Canvas
+# Fling in Canvas
 
-###DEMO:[http://sandbox.runjs.cn/show/mze7osr0](http://sandbox.runjs.cn/show/mze7osr0)
+[DEMO](https://blog.mirreal.net/fling-canvas/index.html) 
 
-使用Javascript实现的fling！，一个趣味十足的创意游戏。
+使用 JavaScript 实现的 fling！，一个趣味十足的创意游戏。
 
-原型来自Candycane：[http://www.candycaneapps.com/fling/](http://www.candycaneapps.com/fling/)
+原型来自 [Candycane](http://www.candycaneapps.com/fling/)
 
-附上一张截图：
+附上一张截图
 
-![snapshot](/img/snapshot.png)
+![snapshot](./img/snapshot.png)
